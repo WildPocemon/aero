@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HVAC Repair &amp; Installation, San Diego County | &lt;name&gt; Climate Systems</title>
+<meta name="description" content="Precision HVAC service across San Diego County — AC repair, heat pumps, mini-splits, air quality and maintenance plans. 24/7 dispatch, flat-rate pricing, certified technicians.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="HVAC Repair &amp; Installation, San Diego County | <name> Climate Systems">
+<meta property="og:description" content="Precision HVAC service across San Diego County. 24/7 dispatch, flat-rate pricing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "name": "<name> Climate Systems",
+  "telephone": "+1-619-555-0142",
+  "priceRange": "$$$",
+  "areaServed": { "@type": "AdministrativeArea", "name": "San Diego County, California" },
+  "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" },
+  "openingHours": "Mo-Su 00:00-23:59"
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="live">Dispatch open — <b>24/7 emergency service</b> across San Diego County</span>
+    <span class="hide-sm">EPA 608 certified · CSLB #000000 · <b><a href="tel:+16195550142">(619) 555-0142</a></b></span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="assets/logo.svg" alt="&lt;name&gt; Climate Systems" width="256" height="46"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#systems">Systems</a>
+      <a href="#plans">Plans</a>
+      <a href="#method">Method</a>
+      <a href="#areas">Coverage</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-cyan" href="#book">Book service</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/img/hero.jpg" width="1800" height="1100" alt="Rooftop air conditioning condenser against an evening sky" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <div>
+      <p class="kicker">San Diego County · Residential &amp; light commercial</p>
+      <h1>Climate control, <span>engineered properly.</span></h1>
+      <p class="lead">&lt;name&gt; Climate Systems designs, repairs and maintains HVAC for homes across the county. Full-system diagnostics, load calculations that are actually run, and pricing quoted flat before we begin.</p>
+      <div class="hero-actions">
+        <a class="btn btn-cyan" href="tel:+16195550142">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1l-2.22 2.2Z"/></svg>
+          (619) 555-0142
+        </a>
+        <a class="btn btn-glass" href="#systems">What we work on</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>24/7</b><span>Emergency dispatch</span></div>
+        <div><b>4.9★</b><span>512 verified reviews</span></div>
+        <div><b>12 yr</b><span>Average technician experience</span></div>
+      </div>
+    </div>
+
+    <div id="book">
+      <form class="glass" id="quote-form" novalidate>
+        <div class="form-body">
+          <h2>Request service</h2>
+          <p class="sub">Send it now — dispatch responds in minutes during the day, and within the hour overnight.</p>
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" data-required placeholder="Jane Doe">
+              <span class="err">Required</span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" data-required placeholder="(619) 555-0142">
+              <span class="err">Enter a valid number</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="system">System</label>
+              <select id="system" name="system" data-required>
+                <option value="">Select…</option>
+                <option>Central AC</option>
+                <option>Heat pump</option>
+                <option>Ductless mini-split</option>
+                <option>Gas furnace</option>
+                <option>Thermostat / controls</option>
+                <option>Air quality / ducts</option>
+                <option>New system quote</option>
+              </select>
+              <span class="err">Required</span>
+            </div>
+            <div class="field">
+              <label for="urgency">Urgency</label>
+              <select id="urgency" name="urgency" data-required>
+                <option value="">Select…</option>
+                <option>Emergency — no heating or cooling</option>
+                <option>Soon — within a day or two</option>
+                <option>Planned — booking ahead</option>
+              </select>
+              <span class="err">Required</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="issue">Symptoms</label>
+            <textarea id="issue" name="issue" placeholder="Compressor kicks on then trips the breaker after a minute…"></textarea>
+          </div>
+          <div class="hp" aria-hidden="true"><input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
+          <button class="btn btn-cyan btn-block" type="submit">Send request</button>
+          <p class="mini">Encrypted and never shared.</p>
+        </div>
+        <div class="form-success" tabindex="-1" role="status">
+          <h3>Request logged</h3>
+          <p>Dispatch has your details and will confirm your window shortly.</p>
+          <p><a class="btn btn-glass" href="tel:+16195550142">Call dispatch directly</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="spec" style="padding:0">
+  <div class="wrap">
+    <div><b>90 min</b><span>County-wide average response</span></div>
+    <div><b>1,800+</b><span>Systems serviced last year</span></div>
+    <div><b>Flat</b><span>Rate pricing, quoted upfront</span></div>
+    <div><b>10 yr</b><span>Parts warranty on installs</span></div>
+  </div>
+</section>
+
+<section id="systems">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Systems</p>
+      <h2>Everything that moves air through your house</h2>
+      <p>Coastal salt corrodes coils; inland heat cooks compressors. We service both climates of this county and every system type that gets installed in them.</p>
+    </div>
+    <div class="bento">
+      <article class="tile wide">
+        <img src="assets/img/b-crew.jpg" width="900" height="700" alt="Technicians working on rooftop air conditioning units" loading="lazy">
+        <span class="tile-num">01 / AC &amp; HEAT PUMPS</span>
+        <h3>Cooling that holds through August</h3>
+        <p>Central AC, heat pumps and rooftop packages — repaired, replaced and commissioned properly. Refrigerant leaks traced to the source, not just topped up. Capacitors, contactors, compressors, coils and control boards.</p>
+      </article>
+      <article class="tile tall">
+        <img src="assets/img/b-heat.jpg" width="700" height="700" alt="Glowing heating element" loading="lazy">
+        <span class="tile-num">02 / HEATING</span>
+        <h3>Furnaces &amp; heat strips</h3>
+        <p>Igniters, flame sensors, blower motors and full combustion safety checks.</p>
+      </article>
+      <article class="tile">
+        <img src="assets/img/b-indoor.jpg" width="700" height="700" alt="Wall-mounted mini-split air conditioner" loading="lazy">
+        <span class="tile-num">03 / MINI-SPLITS</span>
+        <h3>Ductless zones</h3>
+        <p>Single and multi-head systems for additions, garages and older homes.</p>
+      </article>
+      <article class="tile">
+        <img src="assets/img/b-tools.jpg" width="900" height="600" alt="Hand tools laid out on a workbench" loading="lazy">
+        <span class="tile-num">04 / AIR QUALITY</span>
+        <h3>Ducts &amp; filtration</h3>
+        <p>Leak sealing, airflow balancing, media filters and UV treatment.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="plans" id="plans">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Pricing</p>
+      <h2>Know the number before we start</h2>
+      <p>No hourly meter, no vague ranges. Three ways to work with us, all quoted flat.</p>
+    </div>
+    <div class="plan-grid">
+      <article class="plan">
+        <h3>Diagnostic visit</h3>
+        <p>A full system inspection with the findings written down and explained.</p>
+        <div class="price">$89<small> flat</small></div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Complete system diagnostic</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Written findings and photos</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Fee waived if you approve the repair</li>
+        </ul>
+        <a class="btn btn-glass btn-block" href="#book">Book a diagnostic</a>
+      </article>
+
+      <article class="plan featured">
+        <span class="flagship">Most booked</span>
+        <h3>Comfort Club</h3>
+        <p>Two maintenance visits a year plus priority when something goes wrong.</p>
+        <div class="price">$19<small> / month</small></div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Spring cooling and fall heating tune-ups</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Front-of-queue emergency dispatch</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> 15% off any repair, no diagnostic fee</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Filters supplied and fitted</li>
+        </ul>
+        <a class="btn btn-cyan btn-block" href="#book">Join the club</a>
+      </article>
+
+      <article class="plan">
+        <h3>System replacement</h3>
+        <p>Load calculation, equipment options and installation by our own crew.</p>
+        <div class="price">Free<small> estimate</small></div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Manual J load calculation, not guesswork</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Three equipment tiers to compare</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> Rebate and financing paperwork handled</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 17.2 4.8 12.5l1.4-1.4 3.3 3.3 8.3-8.3 1.4 1.4z"/></svg> 10-year parts, 2-year labor warranty</li>
+        </ul>
+        <a class="btn btn-glass btn-block" href="#book">Get an estimate</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="split" id="method">
+  <div class="wrap">
+    <img src="assets/img/tech.jpg" width="800" height="1000" alt="HVAC technician in high-visibility clothing working on equipment" loading="lazy">
+    <div>
+      <p class="kicker">Method</p>
+      <h2>Diagnosis before parts</h2>
+      <p>Most failed HVAC repairs come from swapping the obvious component without asking why it failed. Our technicians work a fixed sequence on every call, and you get the readings in writing.</p>
+      <ol class="steps">
+        <li>
+          <h3>Measure the whole system</h3>
+          <p>Static pressure, temperature split, amp draw and refrigerant state — before anything is opened up.</p>
+        </li>
+        <li>
+          <h3>Find the root cause</h3>
+          <p>A burned contactor is a symptom. We trace what killed it, so the same part doesn't fail again next summer.</p>
+        </li>
+        <li>
+          <h3>Quote it flat, in writing</h3>
+          <p>Repair options with prices attached, plus the honest replacement comparison when the system warrants it.</p>
+        </li>
+        <li>
+          <h3>Verify before we leave</h3>
+          <p>The system runs through a full cycle with us there, and the final readings go on your invoice.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Reviews</p>
+      <h2>Rated 4.9 by 512 households</h2>
+    </div>
+    <div class="reviews">
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"They found a duct disconnected in the attic that three previous companies missed while quoting me new equipment. Sealed it, rebalanced the system, and my back bedrooms finally cool."</p>
+        <div class="who">Elena V.<small>Rancho Bernardo</small></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"Called at 11pm with no AC and a newborn in the house. Someone was here inside an hour and had it running by 1am. Charged the normal rate — no midnight surcharge."</p>
+        <div class="who">Marcus D.<small>Santee</small></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>"The install crew ran an actual load calculation and told me I'd been sold an oversized unit last time. The replacement is smaller, quieter and my bills dropped noticeably."</p>
+        <div class="who">Hannah W.<small>Del Mar</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Coverage</p>
+      <h2>Every ZIP in San Diego County</h2>
+      <p>Trucks stage out of the coast and the inland valleys, so response times stay tight in both climates. Emergency dispatch runs all night, every night.</p>
+      <div class="tagcloud">
+        <span>San Diego</span><span>La Jolla</span><span>Chula Vista</span><span>Oceanside</span>
+        <span>Escondido</span><span>Carlsbad</span><span>El Cajon</span><span>Vista</span>
+        <span>San Marcos</span><span>Encinitas</span><span>La Mesa</span><span>Santee</span>
+        <span>Poway</span><span>National City</span><span>Coronado</span><span>Del Mar</span>
+        <span>Solana Beach</span><span>Rancho Bernardo</span><span>Ramona</span><span>Alpine</span>
+        <span>Fallbrook</span><span>Lemon Grove</span><span>Imperial Beach</span>
+      </div>
+    </div>
+    <div class="map-frame">
+      <img src="assets/img/b-crew.jpg" width="900" height="700" alt="Rooftop HVAC units across a building" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">FAQ</p>
+      <h2>Technical questions, plain answers</h2>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>My AC still cools, just badly. Is that worth a call?</summary>
+        <div class="answer">Usually yes, and early. Weak cooling normally means low refrigerant from a leak, a dirty coil, or restricted airflow — all of which make the compressor work harder. Compressors are the expensive part, so catching the cause early is what keeps a $300 repair from becoming a $6,000 replacement.</div>
+      </details>
+      <details>
+        <summary>Do you charge extra for nights and weekends?</summary>
+        <div class="answer">No. Our rate is the same at 2pm on a Tuesday as it is at 2am on a Sunday. Emergency dispatch is about availability, not surcharges.</div>
+      </details>
+      <details>
+        <summary>How do you size a replacement system?</summary>
+        <div class="answer">With a Manual J load calculation based on your home's square footage, insulation, window area and orientation — not by copying whatever was there before. Oversized systems short-cycle, cool unevenly and fail early; it's the most common installation mistake we find.</div>
+      </details>
+      <details>
+        <summary>Which refrigerants do you handle?</summary>
+        <div class="answer">R-410A and the newer low-GWP A2L refrigerants including R-454B, plus legacy R-22 systems for leak repair and retrofit advice. All our technicians hold EPA Section 608 certification.</div>
+      </details>
+      <details>
+        <summary>Is the Comfort Club worth it if my system is new?</summary>
+        <div class="answer">For most manufacturers, documented annual maintenance is a condition of keeping the equipment warranty valid — so on a new system it's often protecting several thousand dollars of coverage for the price of a couple of coffees a month.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+  <div class="wrap">
+    <div class="cta">
+      <p class="kicker" style="justify-content:center">Ready when you are</p>
+      <h2>Let's get your system right</h2>
+      <p>Dispatch is staffed around the clock, every day of the year, by people who live in this county.</p>
+      <div class="cta-actions">
+        <a class="btn btn-cyan" href="tel:+16195550142">Call (619) 555-0142</a>
+        <a class="btn btn-glass" href="#book">Request service online</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <img src="assets/logo.svg" alt="&lt;name&gt; Climate Systems" width="256" height="46">
+      <p>Residential and light commercial HVAC across San Diego County. Repair, replacement, air quality and maintenance, dispatched 24 hours a day.</p>
+    </div>
+    <div>
+      <h4>Systems</h4>
+      <ul>
+        <li><a href="#systems">Air conditioning</a></li>
+        <li><a href="#systems">Heat pumps</a></li>
+        <li><a href="#systems">Furnaces &amp; heating</a></li>
+        <li><a href="#systems">Ductless mini-splits</a></li>
+        <li><a href="#systems">Ducts &amp; air quality</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dispatch</h4>
+      <ul>
+        <li><a href="tel:+16195550142">(619) 555-0142</a></li>
+        <li><a href="mailto:dispatch@example.com">dispatch@example.com</a></li>
+        <li>Open 24 hours, 7 days</li>
+        <li>San Diego County, CA</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p style="margin:0">&copy; <span id="year">2026</span> &lt;name&gt; Climate Systems · CSLB #000000 · EPA 608 certified</p>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-glass" href="#book">Book service</a>
+  <a class="btn btn-cyan" href="tel:+16195550142">Call 24/7</a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

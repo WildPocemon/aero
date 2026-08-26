@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 46" role="img" aria-label="&lt;name&gt; Climate Systems">
+  <path d="M21 3 3 13v20l18 10 18-10V13Z" fill="none" stroke="#22D3EE" stroke-width="2.4"/>
+  <path d="M21 13v20M12 18v10M30 18v10" stroke="#22D3EE" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="21" cy="23" r="3.4" fill="#22D3EE"/>
+  <text x="52" y="24" font-family="Space Grotesk, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">&lt;name&gt;</text>
+  <text x="52" y="38" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="3.2" fill="#22D3EE">CLIMATE SYSTEMS</text>
+</svg>

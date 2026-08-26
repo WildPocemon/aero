@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262 46" role="img" aria-label="&lt;name&gt; Air Conditioning &amp; Heating">
+  <rect x="0" y="4" width="38" height="38" fill="#DC2626"/>
+  <rect x="6" y="12" width="26" height="4" fill="#fff"/>
+  <rect x="6" y="21" width="26" height="4" fill="#fff"/>
+  <rect x="6" y="30" width="16" height="4" fill="#fff"/>
+  <text x="48" y="23" font-family="IBM Plex Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#111111">&lt;name&gt;</text>
+  <text x="48" y="37" font-family="IBM Plex Sans, Arial, sans-serif" font-size="8.6" font-weight="600" letter-spacing="1.5" fill="#DC2626">AIR CONDITIONING &amp; HEATING</text>
+</svg>
