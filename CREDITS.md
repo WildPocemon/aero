@@ -24,11 +24,11 @@ not caption them in a way that implies otherwise.
 
 | File | Source image |
 |---|---|
-| `assets/img/hero.jpg` | `https://images.unsplash.com/photo-1484154218962-a197022b5858` |
+| `assets/img/hero.jpg` | `https://images.unsplash.com/photo-1556909212-d5b604d0c90d` |
 | `assets/img/svc-fridge.jpg` | `https://images.unsplash.com/photo-1721613877687-c9099b698faa` |
 | `assets/img/svc-laundry.jpg` | `https://images.unsplash.com/photo-1632923565835-6582b54f2105` |
-| `assets/img/svc-oven.jpg` | `https://images.unsplash.com/photo-1596552183299-000ef779e88d` |
-| `assets/img/svc-dishwasher.jpg` | `https://images.unsplash.com/photo-1588854337115-1c67d9247e4d` |
+| `assets/img/svc-oven.jpg` | `https://images.unsplash.com/photo-1556910633-5099dc3971e8` |
+| `assets/img/svc-dishwasher.jpg` | `https://images.unsplash.com/photo-1608193851971-96c2a1f2896c` |
 | `assets/img/tech.jpg` | `https://images.unsplash.com/photo-1618090584176-7132b9911657` |
 | `assets/img/area.jpg` | `https://images.unsplash.com/photo-1754325899655-5e9b7bf05cdc` |
 
