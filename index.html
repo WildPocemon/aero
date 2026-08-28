@@ -25,7 +25,7 @@
   .meta span b{color:var(--white);font-weight:600}
   h2{color:var(--white);font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;
     margin:56px 0 20px;font-weight:600}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);
     display:flex;flex-direction:column;transition:.2s}
   .card:hover{transform:translateY(-4px);border-color:#3A4353}
@@ -45,7 +45,8 @@
   footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px;font-size:.88rem}
   footer code{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:.12rem .4rem;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.84rem;color:var(--white)}
-  @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:880px){.grid{grid-template-columns:1fr 1fr}}
   @media (max-width:620px){.grid{grid-template-columns:1fr}header{padding:44px 0 32px}}
 </style>
 </head>
@@ -54,11 +55,11 @@
 <header>
   <div class="wrap">
     <h1>Appliance &amp; HVAC repair — lead-generation sites</h1>
-    <p>Seven standalone marketing sites, each with its own brand, palette, typography and page
+    <p>Eight standalone marketing sites, each with its own brand, palette, typography and page
       structure. No shared stylesheet and no build step: every folder deploys on its own.</p>
     <div class="meta">
-      <span><b>7</b> sites</span>
-      <span><b>3</b> appliance · <b>4</b> HVAC</span>
+      <span><b>8</b> sites</span>
+      <span><b>4</b> appliance · <b>4</b> HVAC</span>
       <span>Service area: <b>San Diego County</b></span>
       <span>Company name: <b>&lt;name&gt;</b></span>
     </div>
@@ -97,6 +98,16 @@
         <p>Warm cream and forest green with serif headlines. Circular service photos and a family-shop tone.</p>
         <div class="swatches"><i style="background:#1F5F45"></i><i style="background:#C4643C"></i><i style="background:#FBF7F0"></i><i style="background:#2B2620"></i></div>
         <a class="open" href="sites/appliance-03-hearth/index.html">Open site →</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="shot"><img src="previews/appliance-04-subzero-wolf.jpg" alt="Screenshot of the Atelier Sub-Zero and Wolf specialist site" loading="lazy"></div>
+      <div class="card-body">
+        <h3>Atelier</h3>
+        <code>sites/appliance-04-subzero-wolf</code>
+        <p>Restrained luxury in bone and brass. Sub-Zero and Wolf specialist: three service pillars, a fault index and a maintenance programme.</p>
+        <div class="swatches"><i style="background:#9A7B4F"></i><i style="background:#1A1815"></i><i style="background:#F6F3ED"></i><i style="background:#E7E1D5"></i></div>
+        <a class="open" href="sites/appliance-04-subzero-wolf/index.html">Open site →</a>
       </div>
     </article>
   </div>
@@ -149,7 +160,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Swap the placeholder company name, phone, email and service area across all seven sites with
+    <p>Swap the placeholder company name, phone, email and service area across all eight sites with
       <code>./rename.py "Your Company Name"</code>. See <a href="README.md">README.md</a> for the
       pre-launch checklist and <a href="CREDITS.md">CREDITS.md</a> for photo and font licensing.</p>
   </div>

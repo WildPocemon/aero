@@ -1,6 +1,6 @@
 # Repair services lead-generation sites
 
-Seven standalone marketing sites for home-services companies — **three for appliance
+Eight standalone marketing sites for home-services companies — **four for appliance
 repair** and **four for HVAC repair** — each built as a separate, self-contained
 static site with its own brand, palette, typography and page structure.
 
@@ -15,12 +15,13 @@ command — see [Renaming](#renaming).
 | `sites/appliance-01-bluecrest` | Appliance | Clean corporate blue. Split hero with a sticky quote card, photo service grid, three-step process. |
 | `sites/appliance-02-boltyellow` | Appliance | High-contrast black and amber. Full-bleed photo hero with an inline quick-quote bar, scrolling ticker, photo tiles. |
 | `sites/appliance-03-hearth` | Appliance | Warm cream and forest green, serif headlines. Circular service photos, testimonial-led, family-shop tone. |
+| `sites/appliance-04-subzero-wolf` | Appliance | Restrained luxury in bone and brass, Cormorant serif. Sub-Zero and Wolf specialist — three service pillars, a fault index and a maintenance programme. |
 | `sites/hvac-01-thermaline` | HVAC | Cool-to-warm gradient. Floating capsule nav, paired cooling/heating panels, horizontal process timeline. |
 | `sites/hvac-02-nocturne` | HVAC | Dark premium with cyan accents. Glass form card, bento service grid, three pricing plans. |
 | `sites/hvac-03-redalert` | HVAC | Emergency red utility. Square borders, published flat-rate price table, dense information layout. |
 | `sites/hvac-04-sundesert` | HVAC | Sand and terracotta editorial. Magazine collage hero, drop-cap essay, numbered service spreads. |
 
-Open `index.html` at the repository root for a gallery linking to all seven.
+Open `index.html` at the repository root for a gallery linking to all eight.
 
 ## What every site includes
 
@@ -98,6 +99,15 @@ placeholders for whoever deploys them:
    used. Confirm any brand claim is accurate for your business before launch.
 7. **Analytics and consent.** No tracking of any kind is included. Add your own
    analytics, call tracking and cookie notice as your jurisdiction requires.
+8. **Trademarks on the Sub-Zero and Wolf site.** `appliance-04-subzero-wolf`
+   names both marques, which a repair company may do to describe the equipment
+   it services (nominative fair use). To stay on the right side of that line the
+   site uses no manufacturer logo, colour scheme or trade dress, and states its
+   independence in three places: the top bar, the first FAQ answer, and the
+   footer. **Keep those disclaimers** unless you actually hold factory
+   authorization — in which case replace them with the real, current wording
+   your agreement permits. The photography on that site was also chosen to
+   exclude visible manufacturer branding.
 
 ## Credits
 

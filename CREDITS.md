@@ -102,6 +102,20 @@ not caption them in a way that implies otherwise.
 | `assets/img/tech.jpg` | `https://images.unsplash.com/photo-1732395805034-e0bf859665e5` |
 | `assets/img/heatpump.jpg` | `https://images.unsplash.com/photo-1710829558487-53baf9e26003` |
 
+### `sites/appliance-04-subzero-wolf`
+
+| File | Source image |
+|---|---|
+| `assets/img/hero.jpg` | `https://images.unsplash.com/photo-1631048501619-a27088a3bb70` |
+| `assets/img/refrigeration.jpg` | `https://images.unsplash.com/photo-1622372738946-62e02505feb3` |
+| `assets/img/cooking.jpg` | `https://images.unsplash.com/photo-1723902500132-7de6112d5627` |
+| `assets/img/wine.jpg` | `https://images.unsplash.com/photo-1698063126115-7ba800c43289` |
+| `assets/img/detail.jpg` | `https://images.unsplash.com/photo-1663811396777-05505d999151` |
+| `assets/img/kitchen.jpg` | `https://images.unsplash.com/photo-1628745277862-bc0b2d68c50c` |
+
+Photographs on this site were additionally screened to exclude visible
+manufacturer branding, so that no third-party logo or trade dress appears.
+
 ## Fonts
 
 All typefaces are self-hosted as WOFF2 in each site's `assets/fonts/` directory
@@ -119,6 +133,8 @@ served by Google Fonts.
 | IBM Plex Sans | `hvac-03-redalert` | Mike Abbink, Bold Monday for IBM |
 | Outfit | `hvac-04-sundesert` (body) | Smartsheet / On Brand Investments |
 | Playfair Display | `hvac-04-sundesert` (headings) | Claus Eggers Sørensen |
+| Cormorant Garamond | `appliance-04-subzero-wolf` (headings) | Christian Thalmann, Catharsis Fonts |
+| Jost | `appliance-04-subzero-wolf` (body) | Owen Earl, indestructible type* |
 
 ## Icons and logos
 
@@ -129,5 +145,9 @@ the SVG (or run `rename.py`, which rewrites SVG files too) along with the rest
 of the branding.
 
 No third-party or manufacturer logos are reproduced anywhere in this repository.
-Manufacturer names appear only as plain text in the "brands we service" list on
-`appliance-01-bluecrest`.
+Manufacturer names appear only as plain text: in the "brands we service" list on
+`appliance-01-bluecrest`, and on `appliance-04-subzero-wolf`, which names
+Sub-Zero and Wolf to describe the equipment it services. Sub-Zero and Wolf are
+registered trademarks of Sub-Zero Group, Inc.; that site uses no logo, colour
+scheme or trade dress of theirs and carries an independence disclaimer in the
+top bar, the FAQ and the footer.
