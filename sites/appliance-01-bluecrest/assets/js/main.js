@@ -1,4 +1,4 @@
-/* <name> Appliance Repair — Bluecrest */
+/* La Quinta Appliance Repair — Bluecrest */
 (function () {
   'use strict';
 

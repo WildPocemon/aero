@@ -1,4 +1,4 @@
-/* <name> Built-In Appliance Specialists — Atelier */
+/* Palm Springs Built-In Appliance Specialists — Atelier */
 (function () {
   'use strict';
 

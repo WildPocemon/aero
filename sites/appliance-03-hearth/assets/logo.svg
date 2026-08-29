@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 52" role="img" aria-label="&lt;name&gt; Home Appliance Care">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 52" role="img" aria-label="San Diego Home Appliance Care">
   <path d="M24 6 6 19v20a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V19Z" fill="#1F5F45"/>
   <path d="M24 12 12 21v15h24V21Z" fill="#FBF7F0"/>
   <path d="M18 26h12v10H18Z" fill="#C4643C"/>
   <circle cx="21" cy="30" r="1.6" fill="#FBF7F0"/>
-  <text x="54" y="27" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="700" fill="#2B2620">&lt;name&gt;</text>
+  <text x="54" y="27" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="700" fill="#2B2620">San Diego</text>
   <text x="54" y="41" font-family="Inter, Arial, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2.2" fill="#7C7264">HOME APPLIANCE CARE</text>
 </svg>

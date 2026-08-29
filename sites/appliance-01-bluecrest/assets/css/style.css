@@ -1,7 +1,7 @@
 @font-face{font-family:Inter;src:url(../fonts/inter.woff2) format("woff2");
   font-weight:400 800;font-style:normal;font-display:swap}
 
-/* <name> Appliance Repair — "Bluecrest" clean corporate theme */
+/* La Quinta Appliance Repair — "Bluecrest" clean corporate theme */
 :root{
   --blue:#0B5FFF; --blue-dark:#0847c4; --ink:#0A2540; --body:#41576B;
   --line:#E3EAF3; --bg:#fff; --bg-soft:#F5F8FE; --gold:#F5A623; --green:#0E9F6E;

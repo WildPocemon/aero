@@ -1,7 +1,7 @@
 @font-face{font-family:Archivo;src:url(../fonts/archivo.woff2) format("woff2");font-weight:500 900;font-display:swap}
 @font-face{font-family:Inter;src:url(../fonts/inter.woff2) format("woff2");font-weight:400 800;font-display:swap}
 
-/* <name> Appliance Service — "Bolt" high-contrast theme */
+/* Bit Appliance Services — "Bolt" high-contrast theme */
 :root{
   --ink:#111318; --ink-2:#1C1F27; --amber:#FFC400; --amber-dark:#E0A800;
   --paper:#F6F5F1; --muted:#8A8F9C; --line:#2A2E38; --line-light:#E2E0D9;

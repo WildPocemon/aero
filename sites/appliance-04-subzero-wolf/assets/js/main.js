@@ -1,4 +1,4 @@
-/* <name> Built-In Appliance Specialists — Atelier */
+/* San Diego Built-In Appliance Specialists — Atelier */
 (function () {
   'use strict';
 

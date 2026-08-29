@@ -1,4 +1,4 @@
-/* <name> Appliance Service — Bolt */
+/* Bit Appliance Services — Bolt */
 (function () {
   'use strict';
 

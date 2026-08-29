@@ -1,7 +1,7 @@
 @font-face{font-family:Fraunces;src:url(../fonts/fraunces.woff2) format("woff2");font-weight:400 800;font-display:swap}
 @font-face{font-family:Inter;src:url(../fonts/inter.woff2) format("woff2");font-weight:400 800;font-display:swap}
 
-/* <name> Home Appliance Care — "Hearth" warm editorial theme */
+/* San Diego Home Appliance Care — "Hearth" warm editorial theme */
 :root{
   --cream:#FBF7F0; --cream-2:#F3EDE2; --ink:#2B2620; --body:#5E564B;
   --green:#1F5F45; --green-dark:#164733; --clay:#C4643C; --clay-soft:#F0DACF;

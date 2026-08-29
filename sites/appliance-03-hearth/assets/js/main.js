@@ -1,4 +1,4 @@
-/* <name> Home Appliance Care — Hearth */
+/* San Diego Home Appliance Care — Hearth */
 (function () {
   'use strict';
 

@@ -33,6 +33,8 @@
   .shot img{width:100%;display:block}
   .card-body{padding:20px;display:flex;flex-direction:column;flex:1}
   .card h3{color:var(--white);margin:0 0 .3rem;font-size:1.05rem}
+  .brandline{font-size:.78rem;color:#8FA0B4;margin:0 0 .35rem}
+  .brandline .dom{color:var(--accent);font-weight:600}
   .card code{font-size:.78rem;color:#6D7A8C;display:block;margin-bottom:.7rem;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .card p{margin:0 0 1.2rem;font-size:.9rem;flex:1}
@@ -60,8 +62,8 @@
     <div class="meta">
       <span><b>9</b> sites</span>
       <span><b>5</b> appliance · <b>4</b> HVAC</span>
-      <span>Service areas: <b>San Diego County</b> · <b>Palm Springs</b></span>
-      <span>Company name: <b>&lt;name&gt;</b></span>
+      <span>Markets: <b>San Diego</b> · <b>Palm Springs</b></span>
+      <span><b>5</b> branded · <b>4</b> still <b>&lt;name&gt;</b></span>
     </div>
   </div>
 </header>
@@ -73,7 +75,8 @@
     <article class="card">
       <div class="shot"><img src="previews/appliance-01-bluecrest.jpg" alt="Screenshot of the Bluecrest appliance repair site" loading="lazy"></div>
       <div class="card-body">
-        <h3>Bluecrest</h3>
+        <h3>La Quinta Appliance Repair</h3>
+        <p class="brandline"><span class="dom">applianceservice-laquinta.com</span> · Palm Springs · Bluecrest design</p>
         <code>sites/appliance-01-bluecrest</code>
         <p>Clean corporate blue. Split hero with a sticky quote card, photo service grid and a three-step process.</p>
         <div class="swatches"><i style="background:#0B5FFF"></i><i style="background:#0A2540"></i><i style="background:#F5F8FE"></i><i style="background:#F5A623"></i></div>
@@ -83,7 +86,8 @@
     <article class="card">
       <div class="shot"><img src="previews/appliance-02-boltyellow.jpg" alt="Screenshot of the Bolt appliance repair site" loading="lazy"></div>
       <div class="card-body">
-        <h3>Bolt</h3>
+        <h3>Bit Appliance Services</h3>
+        <p class="brandline"><span class="dom">bitapplianceservices.com</span> · Palm Springs · Bolt design</p>
         <code>sites/appliance-02-boltyellow</code>
         <p>High-contrast black and amber. Full-bleed photo hero with an inline quick-quote bar, ticker strip and photo tiles.</p>
         <div class="swatches"><i style="background:#FFC400"></i><i style="background:#111318"></i><i style="background:#F6F5F1"></i><i style="background:#E0A800"></i></div>
@@ -93,7 +97,8 @@
     <article class="card">
       <div class="shot"><img src="previews/appliance-03-hearth.jpg" alt="Screenshot of the Hearth appliance repair site" loading="lazy"></div>
       <div class="card-body">
-        <h3>Hearth</h3>
+        <h3>San Diego Home Appliance Care</h3>
+        <p class="brandline"><span class="dom">sdappliancecare.com</span> · San Diego · Hearth design</p>
         <code>sites/appliance-03-hearth</code>
         <p>Warm cream and forest green with serif headlines. Circular service photos and a family-shop tone.</p>
         <div class="swatches"><i style="background:#1F5F45"></i><i style="background:#C4643C"></i><i style="background:#FBF7F0"></i><i style="background:#2B2620"></i></div>
@@ -103,7 +108,8 @@
     <article class="card">
       <div class="shot"><img src="previews/appliance-04-subzero-wolf.jpg" alt="Screenshot of the Atelier Sub-Zero and Wolf specialist site" loading="lazy"></div>
       <div class="card-body">
-        <h3>Atelier</h3>
+        <h3>San Diego Built-In Appliance Specialists</h3>
+        <p class="brandline"><span class="dom">subzero-maintenance.com</span> · San Diego · Atelier design</p>
         <code>sites/appliance-04-subzero-wolf</code>
         <p>Restrained luxury in bone and brass. Sub-Zero and Wolf specialist: three service pillars, a fault index and a maintenance programme.</p>
         <div class="swatches"><i style="background:#9A7B4F"></i><i style="background:#1A1815"></i><i style="background:#F6F3ED"></i><i style="background:#E7E1D5"></i></div>
@@ -113,7 +119,8 @@
     <article class="card">
       <div class="shot"><img src="previews/appliance-05-subzero-wolf-palm-springs.jpg" alt="Screenshot of the Atelier Palm Springs site" loading="lazy"></div>
       <div class="card-body">
-        <h3>Atelier — Palm Springs</h3>
+        <h3>Palm Springs Built-In Appliance Specialists</h3>
+        <p class="brandline"><span class="dom">subzero-servicecenter.com</span> · Palm Springs · Atelier design</p>
         <code>sites/appliance-05-subzero-wolf-palm-springs</code>
         <p>The Atelier design run for a second market: Palm Springs and the Coachella Valley, with desert-climate maintenance copy.</p>
         <div class="swatches"><i style="background:#9A7B4F"></i><i style="background:#1A1815"></i><i style="background:#F6F3ED"></i><i style="background:#E7E1D5"></i></div>
@@ -170,7 +177,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Swap the placeholder company name, phone, email and service area across all nine sites with
+    <p>Five sites are branded and live-ready. For the four that still use the placeholder, swap name, phone, email and service area with
       <code>./rename.py "Your Company Name"</code>. See <a href="README.md">README.md</a> for the
       pre-launch checklist and <a href="CREDITS.md">CREDITS.md</a> for photo and font licensing.</p>
   </div>

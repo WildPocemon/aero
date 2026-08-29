@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 46" role="img" aria-label="&lt;name&gt; Appliance Service">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 46" role="img" aria-label="Bit Appliance Services">
   <rect x="0" y="3" width="40" height="40" rx="8" fill="#FFC400"/>
   <path d="M22.5 8.5 12 25h7l-2 12.5L28 21h-7.5l2-12.5Z" fill="#111318"/>
-  <text x="50" y="24" font-family="Archivo, Arial Black, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.4">&lt;name&gt;</text>
-  <text x="50" y="38" font-family="Archivo, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="3" fill="#FFC400">APPLIANCE SERVICE</text>
+  <text x="50" y="24" font-family="Archivo, Arial Black, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.4">Bit</text>
+  <text x="50" y="38" font-family="Archivo, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="3" fill="#FFC400">APPLIANCE SERVICES</text>
 </svg>

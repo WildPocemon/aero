@@ -4,10 +4,10 @@ Nine standalone marketing sites for home-services companies — **five for appli
 repair** and **four for HVAC repair** — each built as a separate, self-contained
 static site with its own brand, palette, typography and page structure.
 
-Eight advertise **San Diego County, California** as the service area; the ninth
-is the same design run for **Palm Springs and the Coachella Valley**. Every
-company name is the placeholder `<name>`. Both are swapped with one command —
-see [Renaming](#renaming).
+Five of the nine now carry real brands, domains and markets (see
+[Brands](#brands)). The remaining four — all the HVAC sites — still use the
+`<name>` placeholder and advertise San Diego County, and are swapped with one
+command; see [Renaming](#renaming).
 
 ## The sites
 
@@ -24,6 +24,38 @@ see [Renaming](#renaming).
 | `sites/hvac-04-sundesert` | HVAC | Sand and terracotta editorial. Magazine collage hero, drop-cap essay, numbered service spreads. |
 
 Open `index.html` at the repository root for a gallery linking to all nine.
+
+## Brands
+
+Five sites have been taken off the placeholder and branded for a live market.
+Their `<name>` placeholder is gone, so `rename.py` no longer affects them.
+
+| Site | Company | Domain | Market | Phone |
+|---|---|---|---|---|
+| `appliance-03-hearth` | San Diego Home Appliance Care | sdappliancecare.com | San Diego | (619) 555-0142 |
+| `appliance-04-subzero-wolf` | San Diego Built-In Appliance Specialists | subzero-maintenance.com | San Diego | (619) 555-0142 |
+| `appliance-02-boltyellow` | Bit Appliance Services | bitapplianceservices.com | Palm Springs | (760) 555-0142 |
+| `appliance-01-bluecrest` | La Quinta Appliance Repair | applianceservice-laquinta.com | Palm Springs | (760) 555-0142 |
+| `appliance-05-subzero-wolf-palm-springs` | Palm Springs Built-In Appliance Specialists | subzero-servicecenter.com | Palm Springs | (760) 555-0142 |
+
+Each logo is a two-line lockup — the wordmark carries the distinctive part of
+the name and the tagline supplies the rest, so together they read as the full
+company name without repeating it.
+
+The phone numbers are still reserved 555 placeholders and need replacing before
+launch. The domains are not attached to anything yet — see
+[Pointing the domains](#pointing-the-domains).
+
+## Pointing the domains
+
+The sites are deployed on `*.vercel.app` URLs. To move one onto its real domain:
+
+1. In the Vercel dashboard, open the project → Settings → Domains → Add.
+2. Add the apex (`example.com`) and, if you want it, `www`.
+3. At your registrar, create the DNS records Vercel shows — an `A` record for
+   the apex and a `CNAME` for `www`.
+
+Vercel issues the TLS certificate automatically once DNS resolves.
 
 ## What every site includes
 
@@ -91,9 +123,8 @@ placeholders for whoever deploys them:
    Add `data-endpoint="https://…"` to the `<form>` element and the existing
    JavaScript will `POST` the `FormData` there — no other change needed. Any
    form backend, CRM webhook or serverless function will do.
-2. **Phone numbers.** The San Diego sites ship with `(619) 555-0142` and the
-   Palm Springs site with `(760) 555-0142` — both reserved, non-working
-   numbers. Replace it via `rename.py --phone` before launch, and
+2. **Phone numbers.** San Diego sites carry `(619) 555-0142` and Palm Springs
+   sites `(760) 555-0142` — both reserved, non-working numbers. Replace it via `rename.py --phone` before launch, and
    ideally use a per-site tracking number so lead sources stay distinguishable.
 3. **Licence numbers.** `CSLB #000000` is a placeholder. California requires the
    real licence number on advertising for contracted work over $500.
@@ -108,15 +139,23 @@ placeholders for whoever deploys them:
    used. Confirm any brand claim is accurate for your business before launch.
 7. **Analytics and consent.** No tracking of any kind is included. Add your own
    analytics, call tracking and cookie notice as your jurisdiction requires.
-8. **Trademarks on the Sub-Zero and Wolf site.** `appliance-04-subzero-wolf`
-   names both marques, which a repair company may do to describe the equipment
+8. **Trademarks on the Sub-Zero and Wolf sites.** `appliance-04-subzero-wolf`
+   and `appliance-05-subzero-wolf-palm-springs` name both marques, which a repair company may do to describe the equipment
    it services (nominative fair use). To stay on the right side of that line the
    site uses no manufacturer logo, colour scheme or trade dress, and states its
    independence in three places: the top bar, the first FAQ answer, and the
    footer. **Keep those disclaimers** unless you actually hold factory
    authorization — in which case replace them with the real, current wording
-   your agreement permits. The photography on that site was also chosen to
+   your agreement permits. The photography on those sites was also chosen to
    exclude visible manufacturer branding.
+
+   Note separately that the two domains chosen for them —
+   `subzero-maintenance.com` and `subzero-servicecenter.com` — put the
+   trademark in the domain name itself. That is a materially weaker position
+   than using it in body copy: brand owners police domains far more actively,
+   and a domain incorporating another party's mark is the usual target of a
+   UDRP complaint. Worth a trademark attorney's opinion before you build
+   anything on top of them.
 
 ## Credits
 
