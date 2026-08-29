@@ -30,20 +30,22 @@ Open `index.html` at the repository root for a gallery linking to all nine.
 Five sites have been taken off the placeholder and branded for a live market.
 Their `<name>` placeholder is gone, so `rename.py` no longer affects them.
 
-| Site | Company | Domain | Market | Phone |
-|---|---|---|---|---|
-| `appliance-03-hearth` | San Diego Home Appliance Care | sdappliancecare.com | San Diego | (619) 555-0142 |
-| `appliance-04-subzero-wolf` | San Diego Built-In Appliance Specialists | subzero-maintenance.com | San Diego | (619) 555-0142 |
-| `appliance-02-boltyellow` | Bit Appliance Services | bitapplianceservices.com | Palm Springs | (760) 555-0142 |
-| `appliance-01-bluecrest` | La Quinta Appliance Repair | applianceservice-laquinta.com | Palm Springs | (760) 555-0142 |
-| `appliance-05-subzero-wolf-palm-springs` | Palm Springs Built-In Appliance Specialists | subzero-servicecenter.com | Palm Springs | (760) 555-0142 |
+| Site | Company | Domain | Market |
+|---|---|---|---|
+| `appliance-03-hearth` | San Diego Home Appliance Care | sdappliancecare.com | San Diego |
+| `appliance-04-subzero-wolf` | San Diego Built-In Appliance Specialists | subzero-maintenance.com | San Diego |
+| `appliance-02-boltyellow` | Bit Appliance Services | bitapplianceservices.com | Palm Springs |
+| `appliance-01-bluecrest` | La Quinta Appliance Repair | applianceservice-laquinta.com | Palm Springs |
+| `appliance-05-subzero-wolf-palm-springs` | Palm Springs Built-In Appliance Specialists | subzero-servicecenter.com | Palm Springs |
+
+All nine sites share one phone number, **(442) 349-5545**, advertise **24/7
+availability**, and carry **CSLB #48116**.
 
 Each logo is a two-line lockup — the wordmark carries the distinctive part of
 the name and the tagline supplies the rest, so together they read as the full
 company name without repeating it.
 
-The phone numbers are still reserved 555 placeholders and need replacing before
-launch. The domains are not attached to anything yet — see
+The domains are not attached to anything yet — see
 [Pointing the domains](#pointing-the-domains).
 
 ## Pointing the domains
@@ -123,11 +125,14 @@ placeholders for whoever deploys them:
    Add `data-endpoint="https://…"` to the `<form>` element and the existing
    JavaScript will `POST` the `FormData` there — no other change needed. Any
    form backend, CRM webhook or serverless function will do.
-2. **Phone numbers.** San Diego sites carry `(619) 555-0142` and Palm Springs
-   sites `(760) 555-0142` — both reserved, non-working numbers. Replace it via `rename.py --phone` before launch, and
+2. **Phone number.** All nine sites publish `(442) 349-5545`. This is a real,
+   live number rather than a placeholder — confirm it rings the right desk
+   before driving traffic, and consider a per-site tracking number so lead
+   sources stay distinguishable. Replace it via `rename.py --phone` before launch, and
    ideally use a per-site tracking number so lead sources stay distinguishable.
-3. **Licence numbers.** `CSLB #000000` is a placeholder. California requires the
-   real licence number on advertising for contracted work over $500.
+3. **Licence number.** All nine sites carry `CSLB #48116`. Check it matches the
+   licence actually held by the trading entity — California requires the real
+   number on advertising for contracted work over $500.
 4. **Reviews, ratings and statistics.** The testimonials, star ratings, review
    counts and figures such as "87% first-visit fix rate" are illustrative
    sample copy. Replace them with real, attributable data — publishing invented
