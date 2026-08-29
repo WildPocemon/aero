@@ -1,12 +1,13 @@
 # Repair services lead-generation sites
 
-Eight standalone marketing sites for home-services companies — **four for appliance
+Nine standalone marketing sites for home-services companies — **five for appliance
 repair** and **four for HVAC repair** — each built as a separate, self-contained
 static site with its own brand, palette, typography and page structure.
 
-All seven currently advertise **San Diego County, California** as the service area,
-and every company name is the placeholder `<name>`. Both are swapped with one
-command — see [Renaming](#renaming).
+Eight advertise **San Diego County, California** as the service area; the ninth
+is the same design run for **Palm Springs and the Coachella Valley**. Every
+company name is the placeholder `<name>`. Both are swapped with one command —
+see [Renaming](#renaming).
 
 ## The sites
 
@@ -16,12 +17,13 @@ command — see [Renaming](#renaming).
 | `sites/appliance-02-boltyellow` | Appliance | High-contrast black and amber. Full-bleed photo hero with an inline quick-quote bar, scrolling ticker, photo tiles. |
 | `sites/appliance-03-hearth` | Appliance | Warm cream and forest green, serif headlines. Circular service photos, testimonial-led, family-shop tone. |
 | `sites/appliance-04-subzero-wolf` | Appliance | Restrained luxury in bone and brass, Cormorant serif. Sub-Zero and Wolf specialist — three service pillars, a fault index and a maintenance programme. |
+| `sites/appliance-05-subzero-wolf-palm-springs` | Appliance | The Atelier design run for a second market — Palm Springs and the Coachella Valley, with desert-climate maintenance copy. |
 | `sites/hvac-01-thermaline` | HVAC | Cool-to-warm gradient. Floating capsule nav, paired cooling/heating panels, horizontal process timeline. |
 | `sites/hvac-02-nocturne` | HVAC | Dark premium with cyan accents. Glass form card, bento service grid, three pricing plans. |
 | `sites/hvac-03-redalert` | HVAC | Emergency red utility. Square borders, published flat-rate price table, dense information layout. |
 | `sites/hvac-04-sundesert` | HVAC | Sand and terracotta editorial. Magazine collage hero, drop-cap essay, numbered service spreads. |
 
-Open `index.html` at the repository root for a gallery linking to all eight.
+Open `index.html` at the repository root for a gallery linking to all nine.
 
 ## What every site includes
 
@@ -72,7 +74,13 @@ area:
 
 The script rewrites files in place, so run it on a clean checkout (or a branch)
 and review the diff. Escaping is context-aware: an ampersand in the company name
-becomes `&amp;` in HTML and stays literal inside JSON-LD.
+becomes `&amp;` in HTML and stays literal inside JSON-LD. Phone numbers are
+replaced in all three forms they appear in — display, `tel:` href, and the
+hyphenated form inside the JSON-LD.
+
+Because the set now covers two markets, `--phone` and `--area` hit every site
+unless you narrow them with `--only`. The per-city lists inside each page are
+prose and still need editing by hand.
 
 ## Before going live
 
@@ -83,8 +91,9 @@ placeholders for whoever deploys them:
    Add `data-endpoint="https://…"` to the `<form>` element and the existing
    JavaScript will `POST` the `FormData` there — no other change needed. Any
    form backend, CRM webhook or serverless function will do.
-2. **Phone numbers.** Every site ships with `(619) 555-0142`, a reserved
-   non-working number. Replace it via `rename.py --phone` before launch, and
+2. **Phone numbers.** The San Diego sites ship with `(619) 555-0142` and the
+   Palm Springs site with `(760) 555-0142` — both reserved, non-working
+   numbers. Replace it via `rename.py --phone` before launch, and
    ideally use a per-site tracking number so lead sources stay distinguishable.
 3. **Licence numbers.** `CSLB #000000` is a placeholder. California requires the
    real licence number on advertising for contracted work over $500.

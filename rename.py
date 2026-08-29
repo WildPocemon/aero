@@ -11,6 +11,11 @@ JavaScript comments it appears raw. This script handles both forms.
         --email service@pacificappliance.com --area "Orange County"
     ./rename.py "Pacific Appliance Repair" --dry-run
     ./rename.py "Pacific Appliance Repair" --only hvac-01-thermaline
+
+Note that --phone and --area apply to every site unless --only narrows them.
+The sites cover two markets, so rewriting the area across all of them at once
+is usually not what you want. The per-city lists inside each page are prose and
+still need editing by hand.
 """
 
 import argparse
@@ -23,20 +28,41 @@ ROOT = pathlib.Path(__file__).resolve().parent
 SITES = ROOT / "sites"
 EXTENSIONS = {".html", ".css", ".js", ".svg", ".json", ".md", ".txt", ".webmanifest"}
 
-# Placeholders baked into the sites.
-PLACEHOLDER_PHONE_DISPLAY = "(619) 555-0142"
-PLACEHOLDER_PHONE_TEL = "+16195550142"
+# Placeholders baked into the sites. Each market uses the reserved 555 number
+# for its own area code, so both forms are listed.
+# (display form, tel: href form, hyphenated form used in JSON-LD)
+PLACEHOLDER_PHONES = (
+    ("(619) 555-0142", "+16195550142", "+1-619-555-0142"),
+    ("(760) 555-0142", "+17605550142", "+1-760-555-0142"),
+)
 PLACEHOLDER_EMAILS = ("service@example.com", "hello@example.com", "dispatch@example.com")
-PLACEHOLDER_AREA = "San Diego County"
+# Longest first, so "Palm Springs and the Coachella Valley" is consumed before
+# the bare "Palm Springs" inside it.
+PLACEHOLDER_AREAS = (
+    "Palm Springs and the Coachella Valley",
+    "the Coachella Valley",
+    "San Diego County",
+    "Palm Springs",
+)
 
 
 def tel_href(phone: str) -> str:
     """Turn a display phone number into a tel: href value."""
     digits = re.sub(r"\D", "", phone)
     if not digits:
-        return PLACEHOLDER_PHONE_TEL
+        return PLACEHOLDER_PHONES[0][1]
     if len(digits) == 10:
         digits = "1" + digits
+    return "+" + digits
+
+
+def tel_dashed(phone: str) -> str:
+    """Hyphenated E.164-ish form, as used in the JSON-LD `telephone` field."""
+    digits = re.sub(r"\D", "", phone)
+    if len(digits) == 10:
+        digits = "1" + digits
+    if len(digits) == 11:
+        return f"+{digits[0]}-{digits[1:4]}-{digits[4:7]}-{digits[7:]}"
     return "+" + digits
 
 
@@ -55,13 +81,16 @@ def build_replacements(args, *, json_ld: bool) -> list[tuple[str, str]]:
     pairs.append(("<name>", args.name if json_ld else html.escape(args.name, quote=False)))
 
     if args.phone:
-        pairs.append((PLACEHOLDER_PHONE_TEL, tel_href(args.phone)))
-        pairs.append((PLACEHOLDER_PHONE_DISPLAY, args.phone))
+        for display, tel, dashed in PLACEHOLDER_PHONES:
+            pairs.append((dashed, tel_dashed(args.phone)))
+            pairs.append((tel, tel_href(args.phone)))
+            pairs.append((display, args.phone))
     if args.email:
         for placeholder in PLACEHOLDER_EMAILS:
             pairs.append((placeholder, args.email))
     if args.area:
-        pairs.append((PLACEHOLDER_AREA, args.area))
+        for placeholder in PLACEHOLDER_AREAS:
+            pairs.append((placeholder, args.area))
     return pairs
 
 
@@ -101,9 +130,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("name", help="Company name to write in place of <name>")
-    parser.add_argument("--phone", help=f"Display phone number (replaces {PLACEHOLDER_PHONE_DISPLAY})")
+    parser.add_argument("--phone", help="Display phone number (replaces the 555 placeholders)")
     parser.add_argument("--email", help="Contact email address")
-    parser.add_argument("--area", help=f"Service area (replaces \"{PLACEHOLDER_AREA}\")")
+    parser.add_argument("--area", help="Service area (replaces the placeholder area names)")
     parser.add_argument("--only", action="append", metavar="SITE",
                         help="Limit to one site directory; repeatable")
     parser.add_argument("--dry-run", action="store_true",
