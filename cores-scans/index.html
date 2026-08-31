@@ -1,0 +1,882 @@
+<title>88 Holes, 35 Scans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root {
+    --ground: #E7E8E4;
+    --surface: #F5F6F3;
+    --surface-2: #DCDFD9;
+    --ink: #15181A;
+    --ink-2: #454D51;
+    --muted: #6E777C;
+    --rule: #C6CAC4;
+    --rule-soft: #D6D9D3;
+
+    --core-fg: #A33C12;
+    --core-line: #D9531E;
+    --core-bg: rgba(217, 83, 30, 0.13);
+    --scan-fg: #0B5C67;
+    --scan-line: #10727F;
+    --scan-bg: rgba(16, 114, 127, 0.13);
+    --flag-fg: #8A5008;
+    --flag-bg: rgba(190, 122, 20, 0.16);
+
+    /* The radar band keeps its own world in both themes. */
+    --band: #0B1012;
+    --band-2: #10171A;
+    --band-ink: #ECEFEB;
+    --band-muted: #7C878B;
+    --band-rule: rgba(236, 239, 235, 0.14);
+
+    --shell: 1090px;
+    --step-0: 1rem;
+    --step-1: 1.1875rem;
+    --step-2: 1.5rem;
+    --step-3: clamp(1.75rem, 1.3rem + 1.9vw, 2.4rem);
+    --step-4: clamp(2.3rem, 1.4rem + 4vw, 4rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #151B1D;
+      --surface: #1B2225;
+      --surface-2: #242C30;
+      --ink: #E9ECE8;
+      --ink-2: #B4BCBF;
+      --muted: #8B9599;
+      --rule: #303A3D;
+      --rule-soft: #262E31;
+
+      --core-fg: #FF8C5A;
+      --core-line: #FF7439;
+      --core-bg: rgba(255, 116, 57, 0.15);
+      --scan-fg: #5CC8D8;
+      --scan-line: #3FB6C7;
+      --scan-bg: rgba(63, 182, 199, 0.14);
+      --flag-fg: #E3AB5E;
+      --flag-bg: rgba(227, 171, 94, 0.15);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #151B1D;
+    --surface: #1B2225;
+    --surface-2: #242C30;
+    --ink: #E9ECE8;
+    --ink-2: #B4BCBF;
+    --muted: #8B9599;
+    --rule: #303A3D;
+    --rule-soft: #262E31;
+
+    --core-fg: #FF8C5A;
+    --core-line: #FF7439;
+    --core-bg: rgba(255, 116, 57, 0.15);
+    --scan-fg: #5CC8D8;
+    --scan-line: #3FB6C7;
+    --scan-bg: rgba(63, 182, 199, 0.14);
+    --flag-fg: #E3AB5E;
+    --flag-bg: rgba(227, 171, 94, 0.15);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Archivo", "Archivo Narrow", ui-sans-serif, system-ui, sans-serif;
+    font-stretch: 88%;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.03;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .num {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .label {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: clamp(1.1rem, 4vw, 2.5rem);
+  }
+
+  a { color: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--core-line);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- radar band ---------- */
+
+  .band {
+    position: relative;
+    isolation: isolate;
+    background: var(--band);
+    color: var(--band-ink);
+    overflow: hidden;
+    border-bottom: 1px solid var(--band-rule);
+  }
+
+  #sweep {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .band > .shell {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(2.6rem, 6vw, 4.2rem) clamp(2rem, 4vw, 3rem);
+  }
+
+  .band .eyebrow {
+    color: var(--band-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    align-items: baseline;
+    margin-bottom: 1.4rem;
+  }
+  .band .eyebrow span { white-space: nowrap; }
+  .band .eyebrow .tick { color: var(--core-line); }
+
+  .band h1 {
+    font-size: var(--step-4);
+    max-width: 17ch;
+    margin-bottom: 0.9rem;
+  }
+  .band h1 em {
+    font-style: normal;
+    color: var(--core-line);
+  }
+  .band h1 .t { color: var(--scan-line); }
+
+  .lede {
+    color: var(--band-muted);
+    max-width: 58ch;
+    font-size: var(--step-1);
+    margin: 0 0 2.4rem;
+  }
+
+  .totals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--band-rule);
+    border: 1px solid var(--band-rule);
+  }
+  .total {
+    background: var(--band);
+    padding: 1.15rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .total .label { color: var(--band-muted); }
+  .total .figure {
+    font-family: "Archivo", ui-sans-serif, sans-serif;
+    font-stretch: 84%;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(2.1rem, 1.2rem + 3.4vw, 3.1rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .total.is-core .figure { color: var(--core-line); }
+  .total.is-scan .figure { color: var(--scan-line); }
+  .total .foot {
+    font-size: 0.8125rem;
+    color: var(--band-muted);
+    line-height: 1.45;
+  }
+
+  /* ---------- generic sections ---------- */
+
+  section { padding-block: clamp(2.6rem, 5vw, 4rem); }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 1.8rem;
+  }
+  .sec-head h2 { font-size: var(--step-3); }
+  .sec-head .label { color: var(--muted); }
+
+  /* ---------- service lines ---------- */
+
+  .lines {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .line {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top-width: 3px;
+    padding: 1.4rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .line.core { border-top-color: var(--core-line); }
+  .line.scan { border-top-color: var(--scan-line); }
+  .line h3 { font-size: var(--step-2); }
+  .line.core h3 { color: var(--core-fg); }
+  .line.scan h3 { color: var(--scan-fg); }
+  .line .share {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .meter {
+    height: 6px;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+  .meter i { display: block; height: 100%; }
+  .line.core .meter i { background: var(--core-line); }
+  .line.scan .meter i { background: var(--scan-line); }
+  .line dl {
+    margin: 0.35rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.45rem 1rem;
+    font-size: 0.9375rem;
+  }
+  .line dt { color: var(--muted); }
+  .line dd {
+    margin: 0;
+    text-align: right;
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .line p {
+    margin: 0.4rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* ---------- filters ---------- */
+
+  .filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .filters button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 0.45rem 0.85rem;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  }
+  .filters button:hover { border-color: var(--muted); }
+  .filters button[aria-pressed="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--ground);
+  }
+  .filters button[data-filter="cores"][aria-pressed="true"] {
+    background: var(--core-line);
+    border-color: var(--core-line);
+    color: #FFF6F1;
+  }
+  .filters button[data-filter="scans"][aria-pressed="true"] {
+    background: var(--scan-line);
+    border-color: var(--scan-line);
+    color: #F0FBFC;
+  }
+
+  /* ---------- ledger ---------- */
+
+  .scroller {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  thead th {
+    text-align: right;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  thead th:first-child, thead th.al { text-align: left; }
+
+  tbody td, tfoot td {
+    padding: 0.85rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--rule-soft);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+  td.al { text-align: left; }
+
+  tbody tr { transition: background 120ms ease; }
+  tbody tr:hover { background: var(--surface-2); }
+
+  td.inv {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    border-left: 3px solid transparent;
+    padding-left: calc(1rem - 3px);
+  }
+  tr[data-kind="cores"] td.inv { border-left-color: var(--core-line); }
+  tr[data-kind="scans"] td.inv { border-left-color: var(--scan-line); }
+
+  .chip {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+  tr[data-kind="cores"] .chip { color: var(--core-fg); background: var(--core-bg); }
+  tr[data-kind="scans"] .chip { color: var(--scan-fg); background: var(--scan-bg); }
+
+  .dash { color: var(--muted); }
+  .amount { font-weight: 600; }
+
+  .rate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+  }
+  .rate .bar {
+    width: 84px;
+    height: 5px;
+    background: var(--surface-2);
+    flex: none;
+  }
+  .rate .bar i { display: block; height: 100%; }
+  tr[data-kind="cores"] .bar i { background: var(--core-line); }
+  tr[data-kind="scans"] .bar i { background: var(--scan-line); }
+
+  tfoot td {
+    border-bottom: none;
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 600;
+    background: var(--surface);
+  }
+  tfoot .grand { font-size: 1.0625rem; }
+  tfoot .foot-label {
+    font-family: "Archivo", sans-serif;
+    font-stretch: 88%;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .flag {
+    display: inline-block;
+    margin-left: 0.45rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--flag-fg);
+    background: var(--flag-bg);
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+    vertical-align: 2px;
+  }
+
+  .table-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.875rem;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+
+  /* ---------- notes ---------- */
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem 2.25rem;
+  }
+  .note { border-top: 2px solid var(--rule); padding-top: 1rem; }
+  .note.core { border-top-color: var(--core-line); }
+  .note.scan { border-top-color: var(--scan-line); }
+  .note.flagged { border-top-color: var(--flag-fg); }
+  .note h3 {
+    font-size: 1.125rem;
+    font-stretch: 92%;
+    margin-bottom: 0.5rem;
+  }
+  .note .stat {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.55rem;
+  }
+  .note p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-block: 2rem 3rem;
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+  footer .shell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 2rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  footer p { margin: 0; max-width: 62ch; }
+  footer em { font-style: italic; }
+
+  @media (max-width: 720px) {
+    .totals { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .rate .bar { display: none; }
+    tbody td, tfoot td, thead th { padding-inline: 0.75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+
+<header class="band">
+  <canvas id="sweep" aria-hidden="true"></canvas>
+  <div class="shell">
+    <p class="eyebrow label">
+      <span>Cores &amp; scans ledger</span>
+      <span class="tick">/</span>
+      <span>12.05.25 &ndash; 04.17.26</span>
+      <span class="tick">/</span>
+      <span>6 invoices &middot; 133 days</span>
+    </p>
+    <h1>We made <em>88 holes</em> in concrete and looked very hard at <span class="t">35 more spots</span>.</h1>
+    <p class="lede">Every invoice on this job, what it drilled or scanned, and what each hole
+      actually cost once the truck stopped moving. The radar found the rebar. The ledger found
+      everything else.</p>
+
+    <div class="totals">
+      <div class="total is-core">
+        <span class="label">Cores drilled</span>
+        <span class="figure">88</span>
+        <span class="foot">Four invoices. One barrel that has seen things.</span>
+      </div>
+      <div class="total is-scan">
+        <span class="label">Scan areas</span>
+        <span class="figure">35</span>
+        <span class="foot">Two invoices. See the footnote &mdash; the header row claims 36.</span>
+      </div>
+      <div class="total">
+        <span class="label">Billed</span>
+        <span class="figure">$54,791</span>
+        <span class="foot">$9,131.83 per invoice, on average, which no single invoice was.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="lines">
+    <div class="shell">
+      <div class="sec-head">
+        <h2>Two service lines, wildly unequal</h2>
+        <span class="label">Share of billings</span>
+      </div>
+      <div class="lines">
+        <div class="line core">
+          <h3>Coring</h3>
+          <span class="share">86.0%</span>
+          <div class="meter" role="presentation"><i style="width: 86%;"></i></div>
+          <dl>
+            <dt>Billed</dt><dd>$47,141</dd>
+            <dt>Cores</dt><dd>88</dd>
+            <dt>Blended rate</dt><dd>$535.69</dd>
+            <dt>Invoices</dt><dd>4</dd>
+          </dl>
+          <p>The money is in the holes. Obviously it is &mdash; a hole is permanent and a scan is
+            a strong opinion.</p>
+        </div>
+        <div class="line scan">
+          <h3>Scanning</h3>
+          <span class="share">14.0%</span>
+          <div class="meter" role="presentation"><i style="width: 14%;"></i></div>
+          <dl>
+            <dt>Billed</dt><dd>$7,650</dd>
+            <dt>Scan areas</dt><dd>35</dd>
+            <dt>Blended rate</dt><dd>$218.57</dd>
+            <dt>Invoices</dt><dd>2</dd>
+          </dl>
+          <p>Cheap, fast, and the only reason the coring invoices don't have a post-tension
+            cable line item on them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ledger">
+    <div class="shell">
+      <div class="sec-head">
+        <h2>The ledger</h2>
+        <div class="filters" role="group" aria-label="Filter invoices by service line">
+          <button type="button" data-filter="all" aria-pressed="true">All 6</button>
+          <button type="button" data-filter="cores" aria-pressed="false">Coring</button>
+          <button type="button" data-filter="scans" aria-pressed="false">Scanning</button>
+        </div>
+      </div>
+
+      <div class="scroller">
+        <table>
+          <caption class="label" style="caption-side: top; text-align: left; padding: 0.85rem 1rem; color: var(--muted); border-bottom: 1px solid var(--rule-soft);">
+            Rate column is derived &mdash; amount &divide; units billed
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col" class="al">Inv</th>
+              <th scope="col" class="al">Date</th>
+              <th scope="col" class="al">Line</th>
+              <th scope="col">Cores</th>
+              <th scope="col">Scan areas</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Rate / unit</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr data-kind="scans" data-cores="0" data-scans="25" data-amount="6500">
+              <td class="inv al num">7410</td>
+              <td class="al num">12/05/25</td>
+              <td class="al"><span class="chip">Scanning</span></td>
+              <td class="num dash">&mdash;</td>
+              <td class="num">25</td>
+              <td class="num amount">$6,500</td>
+              <td><span class="rate"><span class="bar"><i style="width: 28.8%;"></i></span><span class="num">$260.00</span></span></td>
+            </tr>
+            <tr data-kind="cores" data-cores="30" data-scans="0" data-amount="13200">
+              <td class="inv al num">7533</td>
+              <td class="al num">01/08/26</td>
+              <td class="al"><span class="chip">Coring</span></td>
+              <td class="num">30</td>
+              <td class="num dash">&mdash;</td>
+              <td class="num amount">$13,200</td>
+              <td><span class="rate"><span class="bar"><i style="width: 48.7%;"></i></span><span class="num">$440.00</span></span></td>
+            </tr>
+            <tr data-kind="scans" data-cores="0" data-scans="10" data-amount="1150">
+              <td class="inv al num">7685</td>
+              <td class="al num">02/13/26</td>
+              <td class="al"><span class="chip">Scanning</span></td>
+              <td class="num dash">&mdash;</td>
+              <td class="num">10</td>
+              <td class="num amount">$1,150</td>
+              <td><span class="rate"><span class="bar"><i style="width: 12.7%;"></i></span><span class="num">$115.00</span></span></td>
+            </tr>
+            <tr data-kind="cores" data-cores="31" data-scans="0" data-amount="9870">
+              <td class="inv al num">7807</td>
+              <td class="al num">04/01/26</td>
+              <td class="al"><span class="chip">Coring</span></td>
+              <td class="num">31</td>
+              <td class="num dash">&mdash;</td>
+              <td class="num amount">$9,870</td>
+              <td><span class="rate"><span class="bar"><i style="width: 35.3%;"></i></span><span class="num">$318.39</span></span></td>
+            </tr>
+            <tr data-kind="cores" data-cores="25" data-scans="0" data-amount="22265">
+              <td class="inv al num">7881</td>
+              <td class="al num">04/09/26</td>
+              <td class="al"><span class="chip">Coring</span></td>
+              <td class="num">25</td>
+              <td class="num dash">&mdash;</td>
+              <td class="num amount">$22,265</td>
+              <td><span class="rate"><span class="bar"><i style="width: 98.6%;"></i></span><span class="num">$890.60</span></span></td>
+            </tr>
+            <tr data-kind="cores" data-cores="2" data-scans="0" data-amount="1806">
+              <td class="inv al num">7930</td>
+              <td class="al num">04/17/26</td>
+              <td class="al"><span class="chip">Coring</span></td>
+              <td class="num">2</td>
+              <td class="num dash">&mdash;</td>
+              <td class="num amount">$1,806</td>
+              <td><span class="rate"><span class="bar"><i style="width: 100%;"></i></span><span class="num">$903.00</span></span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="al foot-label" colspan="3" id="foot-label">Total &mdash; 6 invoices</td>
+              <td class="num" id="foot-cores">88</td>
+              <td class="num" id="foot-scans">35<span class="flag" title="The source summary row states 36.">&plusmn;1</span></td>
+              <td class="num amount grand" id="foot-amount">$54,791</td>
+              <td class="num" id="foot-rate">&mdash;</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="table-note">No invoice bills both lines, so each one is filed by what it did.
+        Filter the table and the total row recalculates &mdash; including the blended rate per unit,
+        which only means something once you are looking at one service line at a time.</p>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="shell">
+      <div class="sec-head">
+        <h2>What the numbers admit</h2>
+        <span class="label">Three findings</span>
+      </div>
+      <div class="notes">
+        <div class="note core">
+          <h3>The first hole costs $900</h3>
+          <span class="stat">7930 &middot; 2 cores &middot; $903.00 ea</span>
+          <p>Two cores, $1,806. Thirty-one cores, $318 each. Nobody is charging for the drilling &mdash;
+            they are charging for the truck, the permit, the parking, and the forty minutes of
+            standing in a stairwell holding a radar cart.</p>
+        </div>
+        <div class="note flagged">
+          <h3>Invoice 7881 wants a word</h3>
+          <span class="stat">25 cores &middot; $890.60 ea &middot; 41% of all billings</span>
+          <p>Same core count as invoice 7410's scan areas, 2.8&times; the rate of invoice 7807 eight
+            days earlier. Either those cores went through something thick, reinforced and expensive,
+            or the line item is carrying passengers. Worth opening the original.</p>
+        </div>
+        <div class="note scan">
+          <h3>One scan area is missing</h3>
+          <span class="stat">25 + 10 = 35, stated total 36</span>
+          <p>The summary row says 36 scan areas; the two scanning invoices add to 35. The dollars
+            reconcile to the cent, so this is a counting slip, not a money one. Still: somewhere out
+            there is a square of slab that thinks it was scanned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>Cores, scan areas and amounts as invoiced. Rates, shares and blended figures are derived here
+      and rounded to the cent. <em>Percentages may not sum to 100 because arithmetic is like that.</em></p>
+    <p class="label">6 inv &middot; 88 cores &middot; 35 scans &middot; $54,791</p>
+  </div>
+</footer>
+
+<script>
+  /* ---- ledger filtering ---- */
+  (function () {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#rows tr'));
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+    var footLabel = document.getElementById('foot-label');
+    var footCores = document.getElementById('foot-cores');
+    var footScans = document.getElementById('foot-scans');
+    var footAmount = document.getElementById('foot-amount');
+    var footRate = document.getElementById('foot-rate');
+
+    var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+    var cents = function (n) {
+      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    };
+
+    function apply(filter) {
+      var cores = 0, scans = 0, amount = 0, count = 0;
+
+      rows.forEach(function (row) {
+        var kindCores = Number(row.dataset.cores) > 0;
+        var show = filter === 'all'
+          || (filter === 'cores' && kindCores)
+          || (filter === 'scans' && !kindCores);
+        row.hidden = !show;
+        if (!show) return;
+        count += 1;
+        cores += Number(row.dataset.cores);
+        scans += Number(row.dataset.scans);
+        amount += Number(row.dataset.amount);
+      });
+
+      footLabel.innerHTML = 'Total &mdash; ' + count + (count === 1 ? ' invoice' : ' invoices');
+      footCores.textContent = cores || '—';
+      footAmount.textContent = money(amount);
+
+      if (scans) {
+        footScans.textContent = scans;
+        if (filter !== 'cores') {
+          var flag = document.createElement('span');
+          flag.className = 'flag';
+          flag.title = 'The source summary row states 36.';
+          flag.textContent = '±1';
+          footScans.appendChild(flag);
+        }
+      } else {
+        footScans.textContent = '—';
+      }
+
+      var units = filter === 'cores' ? cores : filter === 'scans' ? scans : 0;
+      footRate.textContent = units ? cents(amount / units) + ' / unit' : '—';
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        buttons.forEach(function (other) {
+          other.setAttribute('aria-pressed', String(other === button));
+        });
+        apply(button.dataset.filter);
+      });
+    });
+  })();
+
+  /* ---- GPR sweep: rebar echoes under the header ---- */
+  (function () {
+    var canvas = document.getElementById('sweep');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var w = 0, h = 0, dpr = 1;
+
+    /* Each target is a buried object; GPR renders it as a downward hyperbola. */
+    var targets = [
+      { x: 0.08, d: 0.30, tone: 'core' }, { x: 0.19, d: 0.52, tone: 'scan' },
+      { x: 0.31, d: 0.24, tone: 'core' }, { x: 0.42, d: 0.68, tone: 'core' },
+      { x: 0.54, d: 0.40, tone: 'scan' }, { x: 0.63, d: 0.19, tone: 'core' },
+      { x: 0.74, d: 0.58, tone: 'core' }, { x: 0.86, d: 0.34, tone: 'scan' },
+      { x: 0.95, d: 0.62, tone: 'core' }
+    ];
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      canvas.width = Math.max(1, Math.floor(w * dpr));
+      canvas.height = Math.max(1, Math.floor(h * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function hyperbola(x0, y0, spread, alpha, tone) {
+      ctx.beginPath();
+      for (var px = 0; px <= w; px += 4) {
+        var dx = (px - x0) / spread;
+        var py = Math.sqrt(y0 * y0 + dx * dx * y0 * y0 * 1.15);
+        if (py > h + 40) { ctx.stroke(); ctx.beginPath(); continue; }
+        if (px === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = tone === 'scan'
+        ? 'rgba(63, 182, 199, ' + alpha + ')'
+        : 'rgba(255, 116, 57, ' + alpha + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+
+      /* survey grid */
+      ctx.strokeStyle = 'rgba(236, 239, 235, 0.055)';
+      ctx.lineWidth = 1;
+      for (var gy = 0; gy < h; gy += 34) {
+        ctx.beginPath();
+        ctx.moveTo(0, gy + 0.5);
+        ctx.lineTo(w, gy + 0.5);
+        ctx.stroke();
+      }
+
+      var sweepX = reduce ? w * 0.62 : ((t / 7200) % 1) * (w + 300) - 150;
+
+      targets.forEach(function (target) {
+        var x0 = target.x * w;
+        var y0 = target.d * h;
+        var near = 1 - Math.min(Math.abs(x0 - sweepX) / (w * 0.30), 1);
+        var lift = 0.10 + near * near * 0.46;
+        hyperbola(x0, y0, w * 0.26, lift, target.tone);
+        hyperbola(x0, y0 + 10, w * 0.26, lift * 0.55, target.tone);
+        hyperbola(x0, y0 + 20, w * 0.26, lift * 0.28, target.tone);
+      });
+
+      if (!reduce) {
+        var grad = ctx.createLinearGradient(sweepX - 90, 0, sweepX + 12, 0);
+        grad.addColorStop(0, 'rgba(255, 116, 57, 0)');
+        grad.addColorStop(1, 'rgba(255, 116, 57, 0.16)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(sweepX - 90, 0, 102, h);
+        ctx.fillStyle = 'rgba(255, 160, 110, 0.32)';
+        ctx.fillRect(sweepX, 0, 1, h);
+      }
+    }
+
+    function frame(t) {
+      draw(t);
+      requestAnimationFrame(frame);
+    }
+
+    resize();
+    if (reduce) {
+      draw(0);
+    } else {
+      requestAnimationFrame(frame);
+    }
+    window.addEventListener('resize', function () {
+      resize();
+      if (reduce) draw(0);
+    });
+  })();
+</script>
